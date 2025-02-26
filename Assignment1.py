@@ -9,3 +9,6 @@ def intro():
     print("Welcome to my first project! We learn to count to 20: ")
     for i in range (21):
         print({i})
+
+intro()
+addition()
