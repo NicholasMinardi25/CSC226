@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> This Is My Third Homework </title>
+        <!-- your styling in here -->
+         <style>
+            main {
+                background-color: firebrick;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            body { 
+                color: #eec0bb;
+                font-family: Trattatello, fantasy;
+                text-align: center;
+                background-color: rgb(220, 222, 224);
+                border: double 10px #971708;
+                box-shadow: 0 0 10px #971708;
+                padding: 20px;
+            }
+            h1 {
+                color: #eec0bb;
+                text-align: center;
+            }
+            button {
+                color: #eec0bb;
+                width: 25%;
+                background-color: #971708;
+                font-family: Trattatello, fantasy;
+                font-weight: 600;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+            #myButton {
+                display: none;
+                margin-top: 20px;
+            }
+            button:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+            }
+            .form-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            }
+            </style>
+
+            <!-- your function in here -->
+
+            <script type = "text/javascript">
+                function Display(){
+                    let firstname = document.getElementById ('fname').value;
+                    let lastname = document.getElementById('lname').value;
+                    let email = document.getElementById ('email').value;
+                    let age = document.getElementById('age').value;
+                    if(firstname && lastname && email && age){
+                    alert("Hello " + firstname + " " + lastname + " We see your age is " + age + " and your email is: " + email + " and since its a valid email and age, I can show you my project!");
+                    document.getElementById("myButton").style.display = "block";
+                    } else {
+                        alert("Please fill out all fields!");
+                    }
+                }
+
+                function changeStyle(){
+                    let style = prompt("Now we are in the project to change the color of the form. Are you ready? (Type Yes or No)");
+                    
+                    if(style.toLowerCase()=="yes"){
+                        document.querySelector(".form-container").style.background = "pink";
+                        document.querySelector(".form-container").style.color = "black";
+                        document.querySelector(".form-container").style.border = "3px solid purple";
+                    } else {
+                        alert("well screw you.")
+                    }
+            }
+    
+                </script>
+
+    </head>
+
+    <!-- your elements go here -->
+
+    <body>
+        <div class="container mt-5">
+        <br>
+        <h1> Please fill out the form to see what my project offers. </h1>
+        <h2> you won't be disappointed! </h2>
+        <form id = "Register">
+            <div class = "form-container">
+                    <label for = "fname">Enter First Name:</label>
+                    <input type = "text" id = "fname" required>
+           
+                    <label for = "lname">Enter Last Name:</label>
+                    <input type = "text" id = "lname" required>
+            
+                    <label for = "email">Enter Email:   </label>
+                    <input type = "email" id = "email" required>
+
+                    <label for="age">Enter Age:</label>
+                    <input type="number" id="age" required>
+
+            <button id = "button" type = "button" onclick= "Display()">Click me when done</button>
+         </form>
+        </div>
+
+        <button id = "myButton" onclick="changeStyle()">Now Click Me</button>
+    </div>
+</body>
+</html>

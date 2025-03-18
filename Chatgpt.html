@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Fact Generator - MAXIMUM INSANITY</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff0000, #0000ff);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            animation: crazyBackground 0.2s infinite alternate;
+        }
+        .container {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            animation: shake 0.5s infinite;
+            position: relative;
+            z-index: 10;
+        }
+        h1 {
+            font-size: 35px;
+            animation: colorFlash 0.5s infinite alternate;
+            text-shadow: 4px 4px 10px rgba(0, 255, 255, 0.8);
+        }
+        button {
+            background: linear-gradient(45deg, #ffcc00, #ff6600);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: 0.2s;
+            outline: none;
+            margin-top: 15px;
+            animation: explode 0.7s infinite alternate;
+        }
+        button:hover {
+            transform: scale(1.5);
+            background: linear-gradient(45deg, #ff6600, #ffcc00);
+        }
+        p {
+            margin-top: 20px;
+            font-size: 26px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            text-shadow: 3px 3px 8px rgba(0, 255, 0, 0.8);
+        }
+        .emoji {
+            font-size: 80px;
+            position: absolute;
+            opacity: 0.9;
+            animation: bounce 1s infinite alternate ease-in-out;
+        }
+        .emoji:nth-child(1) { left: 5%; top: 10%; }
+        .emoji:nth-child(2) { right: 20%; top: 30%; animation-delay: 0.5s; }
+        .emoji:nth-child(3) { left: 30%; bottom: 10%; animation-delay: 1s; }
+        .emoji:nth-child(4) { right: 10%; bottom: 25%; animation-delay: 1.5s; }
+        
+        @keyframes crazyBackground {
+            0% { background: linear-gradient(135deg, #ff0000, #0000ff); }
+            100% { background: linear-gradient(135deg, #00ff00, #ff00ff); }
+        }
+        @keyframes colorFlash {
+            from { color: #fff; }
+            to { color: #ffcc00; }
+        }
+        @keyframes explode {
+            from { transform: scale(1); }
+            to { transform: scale(1.3); }
+        }
+        @keyframes shake {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="emoji">🔥</div>
+    <div class="emoji">🚀</div>
+    <div class="emoji">💥</div>
+    <div class="emoji">🤯</div>
+    <div class="container">
+        <h1>CLICK FOR A FACT THAT WILL MELT YOUR BRAIN</h1>
+        <button onclick="generateFact()">UNLEASH CHAOS</button>
+        <p id="fact"></p>
+    </div>
+
+    <script>
+        const facts = [
+            "Octopuses have three hearts!",
+            "Bananas are berries, but strawberries aren’t!",
+            "Honey never spoils!",
+            "You can’t hum while holding your nose!",
+            "A group of flamingos is called a 'flamboyance'!",
+            "The Eiffel Tower can be 15 cm taller during summer!",
+            "Cats have a special reflective layer behind their retinas called the tapetum lucidum!",
+            "Wombat poop is cube-shaped!",
+            "Sharks existed before trees!",
+            "There's a species of jellyfish that can live forever!",
+            "ChatGPT helped create this insanity!"
+        ];
+        
+        function generateFact() {
+            const factElement = document.getElementById('fact');
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            factElement.textContent = facts[randomIndex];
+            factElement.style.opacity = 1;
+            crazyEffect();
+        }
+
+        function crazyEffect() {
+            document.body.style.animation = 'crazyBackground 0.1s infinite alternate';
+            setTimeout(() => document.body.style.animation = '', 5000);
+        }
+    </script>
+</body>
+</html>
