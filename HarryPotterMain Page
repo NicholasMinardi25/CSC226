@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <meta charset="UTF-8">
+<title>Sorting Hat</title>
+<link rel="icon" href="favicon.ico" type="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href=" ">
+    <script src=" "></script>
+<style>
+
+
+
+
+</style>
+
+<body>
+
+<img src="img_la.jpg" style="width:100%">
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+</body>
+</html>
