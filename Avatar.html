@@ -110,11 +110,41 @@ body {
   margin-top: 10px;
   text-align: center;
 }
+.welcome-container {
+    background-color: #B6D7F4;
+    border: 3px solid #f4c135;
+    border-radius: 30px;
+    padding: 30px 20px;
+    margin: 30px auto;
+    box-shadow: 0 0 40px rgba(195, 136, 19, 0.6);
+    font-family: 'Cinzel Decorative', serif;
+  }
+  .welcome-container h1 {
+  color: rgb(195, 136, 19);
+  text-align: center;
+ }
+.welcome-container p {
+  color: rgb(255, 255, 255);
+  font-size: 1.3rem;
+  margin-top: 10px;
+  text-align: center;
+}
   @keyframes fadeSlide {
     to {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+  .form-button {
+    padding: 15px 30px;
+      font-size: 20px;
+      background-color: #ad750e;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
   }
 </style>
 
@@ -129,15 +159,23 @@ body {
   <button class="circle-btn" onClick="fetchOptions()">+</button>
 
   <div class="options-container" id="options">
-    <button class="option-btn" href = "Avatar.html">Home</button>
-    <button class="option-btn" href = "form.html">Element Form</button>
-    <button class="option-btn">Characters</button>
-    <button class="option-btn">Element Page</button>
-    <button class="option-btn">About</button>
-  </div>
+    <button class="option-btn" onclick="window.location.href='Avatar.html'">Home</button>
+    <button class="option-btn" onclick="window.location.href='welcome.html'">Element Form</button>
+    <button class="option-btn" onclick="window.location.href='characters.html'">Characters</button>
+    <button class="option-btn" onclick="window.location.href='elements.html'">Element Page</button>
+    <button class="option-btn" onclick="window.location.href='about.html'">About</button>
+  </div>  
 <div class = "container-info">
   <h1> Welcome to the avatar Elemental Quiz.</h1>
   <p>This quiz is used to determine which bender you would become. There is a unique set of bendings alongisde there subbendings. You can find that in the element page!</p>
+</div>
+
+<div class="welcome-container">
+  <h1> Below is the button to go the form.</h1>
+  <form action="welcome.html" style="text-align: center;">
+    <button type="submit" class="form-button">Start Form Now</button>
+  </form>
+
 </div>
   <script>
     function fetchOptions() {
