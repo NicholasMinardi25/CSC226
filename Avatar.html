@@ -16,15 +16,13 @@
 
 <style>
  .avatar-jumbotron {
+  background-color: #B6D7F4;
   border: 3px solid #f4c135;
   border-radius: 30px;
-  padding: 80px 20px;
-  margin: 80px auto;
+  padding: 60px 20px;
+  margin: 60px auto;
   box-shadow: 0 0 40px rgba(195, 136, 19, 0.6);
   font-family: 'Cinzel Decorative', serif;
-  background-image: url('https://i.redd.it/91dlrvrogxac1.png');
-  background-position: center;
-  background-blend-mode: overlay;
 }
 .avatar-jumbotron h1 {
   color: rgb(195, 136, 19);
@@ -37,11 +35,17 @@
   text-shadow: 1px 1px 3px black;
 }
 body {
-    color: rgb(195, 136, 19);
-    background-color: #B6D7F4;
-    font-family: 'Cinzel Decorative', serif;
-    
+  background-image: url('https://i.redd.it/91dlrvrogxac1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+  background-blend-mode: overlay; 
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(195, 136, 19);
+  font-family: 'Cinzel Decorative', serif;
 }
+
 
 .circle-btn {
       position: fixed;
@@ -49,7 +53,7 @@ body {
       left: 20px;
       width: 50px;
       height: 50px;
-      background-color: #f4c135;
+      background-color: rgb(122, 37, 9);
       color: white;
       border: none;
       border-radius: 50%;
@@ -66,8 +70,8 @@ body {
     }
     .options-container {
     position: fixed;
-    top: 80px;
-    left: 20px;
+    top: 10px;
+    left: 80px;
     display: none;
     flex-direction: row;
     gap: 10px;
@@ -87,7 +91,25 @@ body {
     transform: translateY(-10px);
     animation: fadeSlide 0.3s ease forwards;
   }
-
+  .container-info {
+    background-color: #B6D7F4;
+    border: 3px solid #f4c135;
+    border-radius: 30px;
+    padding: 30px 20px;
+    margin: 30px auto;
+    box-shadow: 0 0 40px rgba(195, 136, 19, 0.6);
+    font-family: 'Cinzel Decorative', serif;
+  }
+  .container-info h1 {
+  color: rgb(195, 136, 19);
+  text-align: center;
+}
+.container-info p {
+  color: rgb(255, 255, 255);
+  font-size: 1.3rem;
+  margin-top: 10px;
+  text-align: center;
+}
   @keyframes fadeSlide {
     to {
       opacity: 1;
@@ -107,13 +129,16 @@ body {
   <button class="circle-btn" onClick="fetchOptions()">+</button>
 
   <div class="options-container" id="options">
-    <button class="option-btn">Home</button>
-    <button class="option-btn">Element Form</button>
+    <button class="option-btn" href = "Avatar.html">Home</button>
+    <button class="option-btn" href = "form.html">Element Form</button>
     <button class="option-btn">Characters</button>
     <button class="option-btn">Element Page</button>
     <button class="option-btn">About</button>
   </div>
-
+<div class = "container-info">
+  <h1> Welcome to the avatar Elemental Quiz.</h1>
+  <p>This quiz is used to determine which bender you would become. There is a unique set of bendings alongisde there subbendings. You can find that in the element page!</p>
+</div>
   <script>
     function fetchOptions() {
     const options = document.getElementById('options');
