@@ -1,0 +1,3 @@
+avatar_quiz/*.db
+__pycache__/
+*.pyc
