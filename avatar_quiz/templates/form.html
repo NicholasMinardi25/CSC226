@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Avatar Quiz</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    .question {
+      display: none;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.3s ease;
+    }
+  
+    .question.active {
+      display: block;
+      animation: popin 0.3s forwards;
+    }
+  
+    @keyframes popin {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  
+    button {
+      margin-top: 20px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <h2>Hi {{ username }}! Let’s discover your Avatar identity step-by-step!</h2>
+    <form action="/submit" method="POST" id="quizForm">
+      <input type="hidden" name="username" value="{{ username }}">
+
+      <div class="question active" id="q1">
+        <label>1. Who's your favorite Avatar?</label><br>
+        <input type="radio" name="q1" value="Aang" required> Aang<br>
+        <input type="radio" name="q1" value="Roku"> Roku<br>
+        <input type="radio" name="q1" value="Korra"> Korra<br>
+        <input type="radio" name="q1" value="Kyoshi"> Kyoshi<br>
+        <button type="button" onclick="nextQuestion(1)">Next</button>
+      </div>
+
+      <div class="question" id="q2">
+        <label>2. It's dinnertime! Pick your ideal meal:</label><br>
+        <input type="radio" name="q2" value="A spicy dish" required> A spicy dish<br>
+        <input type="radio" name="q2" value="A hearty banquet"> A hearty banquet<br>
+        <input type="radio" name="q2" value="A seafood feast"> A seafood feast<br>
+        <input type="radio" name="q2" value="A vegetarian delight"> A vegetarian delight<br>
+        <button type="button" onclick="nextQuestion(2)">Next</button>
+      </div>
+
+      <div class="question" id="q3">
+        <label>3. Pick an animal to be your companion:</label><br>
+        <input type="radio" name="q3" value="Polar Bear Dog" required> Polar Bear Dog<br>
+        <input type="radio" name="q3" value="Badgermole"> Badgermole<br>
+        <input type="radio" name="q3" value="Dragon"> Dragon<br>
+        <input type="radio" name="q3" value="Flying Bison"> Flying Bison<br>
+        <button type="button" onclick="nextQuestion(3)">Next</button>
+      </div>
+
+      <div class="question" id="q4">
+        <label>4. To win a fight, what approach do you take?</label><br>
+        <input type="radio" name="q4" value="Evade" required> Evade, defend, and neutralize nonviolently<br>
+        <input type="radio" name="q4" value="Stand your ground"> Stand your ground, block attacks, and use all your strength<br>
+        <input type="radio" name="q4" value="Heavy offense"> Heavy offense, keep moving, and dodge while attacking<br>
+        <input type="radio" name="q4" value="Counterstrike"> Counterstrike instead of initiate, then use their force against them<br>
+        <button type="button" onclick="nextQuestion(4)">Next</button>
+      </div>
+
+      <div class="question" id="q5">
+        <label>5. How do you process your emotions?</label><br>
+        <input type="radio" name="q5" value="Openly and passionately" required> Openly and passionately<br>
+        <input type="radio" name="q5" value="Calmly and introspectively"> Calmly and introspectively<br>
+        <button type="submit">Reveal My Avatar</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function nextQuestion(current) {
+      const currentDiv = document.getElementById('q' + current);
+      const nextDiv = document.getElementById('q' + (current + 1));
+  
+      if (currentDiv.querySelector('input:checked')) {
+        currentDiv.classList.remove('active');
+        nextDiv.classList.add('active');
+      } else {
+        alert('Please select an option to continue.');
+      }
+    }
+  </script>
+  
+</body>
+</html>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Avatar Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    .avatar-group {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>All Users & Their Avatars</h1>
+
+    {% set grouped = {} %}
+    {% for user in users %}
+      {% set avatar = user[7] %}
+      {% if avatar not in grouped %}
+        {% set _ = grouped.update({avatar: []}) %}
+      {% endif %}
+      {% set _ = grouped[avatar].append(user) %}
+    {% endfor %}
+
+    {% for avatar, group in grouped.items() %}
+      <div class="avatar-group">
+        <h2>{{ avatar }}</h2>
+        <ul>
+          {% for user in group %}
+            <li>{{ user[1] }} ({{ user[2] }}, {{ user[3] }}, {{ user[4] }})</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+
+    <a href="/">← Back to Start</a>
+  </div>
+</body>
+</html>
+
