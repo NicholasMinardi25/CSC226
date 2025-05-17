@@ -102,29 +102,12 @@ body {
   }
   .container-info h1 {
   color: rgb(195, 136, 19);
+  text-shadow: 3px 3px 5px black;
   text-align: center;
 }
 .container-info p {
   color: rgb(255, 255, 255);
-  font-size: 1.3rem;
-  margin-top: 10px;
-  text-align: center;
-}
-.welcome-container {
-    background-color: #B6D7F4;
-    border: 3px solid #f4c135;
-    border-radius: 30px;
-    padding: 30px 20px;
-    margin: 30px auto;
-    box-shadow: 0 0 40px rgba(195, 136, 19, 0.6);
-    font-family: 'Cinzel Decorative', serif;
-  }
-  .welcome-container h1 {
-  color: rgb(195, 136, 19);
-  text-align: center;
- }
-.welcome-container p {
-  color: rgb(255, 255, 255);
+  text-shadow: 3px 3px 5px black;
   font-size: 1.3rem;
   margin-top: 10px;
   text-align: center;
@@ -135,17 +118,48 @@ body {
       transform: translateY(0);
     }
   }
-  .form-button {
-    padding: 15px 30px;
-      font-size: 20px;
-      background-color: #ad750e;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background-color: #B6D7F4;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 220px;
+      overflow: hidden;
       transition: transform 0.2s;
-  }
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: bold;
+      color: #34495e;
+      margin-bottom: 5px;
+    }
+
+    .affiliation {
+      font-size: 14px;
+      color: #7f8c8d;
+    }
 </style>
 
 <body>
@@ -166,10 +180,9 @@ body {
     <button class="option-btn" style="background-color:#136310 "onclick="window.location.href='about.html'">About</button>
   </div>  
 <div class = "container-info">
-  <h1> Welcome to the avatar Elemental Quiz.</h1>
-  <p>This quiz is used to determine which bender you would become. There is a unique set of bendings alongisde there subbendings. You can find that in the element page!</p>
+  <h1> Welcome to the avatar character world!</h1>
+  <p>Down below is some very known characters from ATLA (Avatar the Last Airbender) and TLOK (The legend of Korra).</p>
 </div>
-
 </div>
   <script>
     function fetchOptions() {
@@ -187,6 +200,16 @@ body {
     }
   }
   </script>
+  <div class="grid" id="character-grid"></div>
+<script>
+  const grid = document.getElementById('character-grid');
+
+  const mainTVCharacters = [
+      "Aang", "Katara", "Sokka", "Zuko", "Toph Beifong", "Iroh", "Azula", "Appa", "Momo","Mai", "Ty Lee",
+      "Korra", "Mako", "Bolin", "Asami Sato", "Tenzin", "Lin Beifong", "Jinora", "Ikki", "Meelo"
+    ];
+</script>
+  
 </body>
 </body>
 </html>
