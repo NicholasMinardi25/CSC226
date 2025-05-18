@@ -165,7 +165,7 @@ body {
 <body>
   <div class="avatar-jumbotron text-center text-light">
     <div class="container py-5">
-      <h1 class="display-1">Welcome To The Characters.</h1>
+      <h1 class="display-1">Welcome to the avatar character world!</h1>
       <p class="lead">Here we have 2 shows, Avatar the Last Airbender and The legend of korra which each character having their own unique ways of bending styles</p>
     </div>
   </div>
@@ -174,13 +174,13 @@ body {
 
   <div class="options-container" id="options">
     <button class="option-btn" onclick ="window.location.href='Avatar.html'">Home</button>
-    <button class="option-btn" style="background-color:#ad750e "onclick = "window.location.href='welcome.html'">Element Form</button>
+    <button class="option-btn" style="background-color:#ad750e "onclick = "window.location.href='https://avatar-quiz-vyli.onrender.com'">Element Form</button>
     <button class="option-btn" style="background-color:#144aa1 "onclick="window.location.href='characters.html'">Characters</button>
     <button class="option-btn" style="background-color:#888277 "onclick="window.location.href='elements.html'">Element Page</button>
     <button class="option-btn" style="background-color:#136310 "onclick="window.location.href='about.html'">About</button>
   </div>  
 <div class = "container-info">
-  <h1> Welcome to the avatar character world!</h1>
+  <h1> Welcome To The Characters.</h1>
   <p>Down below is some very known characters from ATLA (Avatar the Last Airbender) and TLOK (The legend of Korra).</p>
 </div>
 </div>
@@ -205,9 +205,60 @@ body {
   const grid = document.getElementById('character-grid');
 
   const mainTVCharacters = [
-      "Aang", "Katara", "Sokka", "Zuko", "Toph Beifong", "Iroh", "Azula", "Appa", "Momo","Mai", "Ty Lee",
-      "Korra", "Mako", "Bolin", "Asami Sato", "Tenzin", "Lin Beifong", "Jinora", "Ikki", "Meelo"
+      "Aang", "Katara", "Sokka", "Zuko", "Toph Beifong", "Iroh", "Azula", "Appa", "Momo","Mai", "Ty Lee", "Bumi", "Ozai",
+      "Korra", "Mako", "Bolin", "Asami Sato", "Tenzin", "Lin Beifong", "Jinora", "Ikki", "Meelo",
+      "Iknik Blackstone Varrick", "Zhu Li Moon"
     ];
+
+    async function loadCharacters() {
+      let page = 1;
+      let perPage = 100;
+      let found = new Map();
+
+      try {
+        while (page <= 5 && found.size < mainTVCharacters.length) {
+          const res = await fetch(`https://last-airbender-api.fly.dev/api/v1/characters?perPage=${perPage}&page=${page}`);
+          const data = await res.json();
+
+          data.forEach(char => {
+            if (
+              mainTVCharacters.includes(char.name) &&
+              char.photoUrl &&
+              !found.has(char.name)
+            ) {
+              found.set(char.name, char);
+            }
+          });
+
+          page++;
+        }
+
+        if (found.size === 0) {
+          grid.innerHTML = "<p>No characters found.</p>";
+          return;
+        }
+
+        found.forEach(character => {
+          const card = document.createElement('div');
+          card.className = 'card';
+
+          card.innerHTML = `
+            <img src="${character.photoUrl}" alt="${character.name}">
+            <div class="card-content">
+              <div class="name">${character.name}</div>
+              <div class="affiliation">${character.affiliation || 'Unknown'}</div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+      } catch (error) {
+        console.error("Failed to fetch characters:", error);
+        grid.innerHTML = "<p>Error loading data.</p>";
+      }
+    }
+
+    loadCharacters();
 </script>
   
 </body>
