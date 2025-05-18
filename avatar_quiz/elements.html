@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Elements</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+</head>
+
+<style>
+ .avatar-jumbotron {
+  background-color: #B6D7F4;
+  border: 3px solid #f4c135;
+  border-radius: 30px;
+  padding: 60px 20px;
+  margin: 60px auto;
+  box-shadow: 0 0 40px rgba(195, 136, 19, 0.6);
+  font-family: 'Cinzel Decorative', serif;
+}
+.avatar-jumbotron h1 {
+  color: rgb(195, 136, 19);
+  text-shadow: 3px 3px 5px black;
+}
+.avatar-jumbotron p {
+  color: #d8cfc2;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  text-shadow: 1px 1px 3px black;
+}
+body {
+  background-image: url('https://i.redd.it/91dlrvrogxac1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+  background-blend-mode: overlay; 
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(195, 136, 19);
+  font-family: 'Cinzel Decorative', serif;
+}
+
+
+.circle-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: rgb(122, 37, 9);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circle-btn:hover {
+      background-color: #d8cfc2;
+    }
+    .options-container {
+    position: fixed;
+    top: 10px;
+    left: 80px;
+    display: none;
+    flex-direction: row;
+    gap: 10px;
+    animation: fadeSlide 0.3s ease forwards;
+  }
+
+  .option-btn {
+    width: 120px;
+    padding: 10px;
+    background-color: rgb(122, 37, 9);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeSlide 0.3s ease forwards;
+  }
+  .container-info {
+    background-color: #B6D7F4;
+    border: 3px solid #f4c135;
+    border-radius: 30px;
+    padding: 30px 20px;
+    margin: 30px auto;
+    box-shadow: 0 0 40px rgba(195, 136, 19, 0.6);
+    font-family: 'Cinzel Decorative', serif;
+  }
+  .container-info h1 {
+  color: rgb(195, 136, 19);
+  text-shadow: 3px 3px 5px black;
+  text-align: center;
+}
+.container-info p {
+  color: rgb(255, 255, 255);
+  text-shadow: 3px 3px 5px black;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  text-align: center;
+}
+  @keyframes fadeSlide {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .elements-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .elements-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .elements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+    }
+
+    .element-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .element-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .element-icon {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .element-name {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .sub-bending {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.6;
+      display: none;
+      margin-top: 10px;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 14px;
+      color: #888;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .element-card.active .sub-bending,
+    .element-card.active .quote {
+      display: block;
+    }
+
+    .water { border-left: 6px solid #00bcd4; }
+    .earth { border-left: 6px solid #4caf50; }
+    .fire  { border-left: 6px solid #f44336; }
+    .air   { border-left: 6px solid #ffc107; }
+
+    .avatar {
+  border-left: 6px solid transparent;
+  background: linear-gradient(135deg, #00bcd4, #4caf50, #f44336, #ffc107);
+  background-size: 300% 300%;
+  animation: avatarGlow 6s ease infinite;
+  color: #fff;
+}
+
+@keyframes avatarGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+  </style>
+  <body>
+  
+  <div class="avatar-jumbotron text-center text-light">
+    <div class="container py-5">
+      <h1 class="display-1">Welcome To The Element Pages</h1>
+      <p class="lead">Here you can check the elemnts, their sub elements, Traits and Symbols.</p>
+    </div>
+  </div>
+
+  <button class="circle-btn" onClick="fetchOptions()">+</button>
+
+  <div class="options-container" id="options">
+    <button class="option-btn" onclick ="window.location.href='Avatar.html'">Home</button>
+    <button class="option-btn" style="background-color:#ad750e "onclick = "window.location.href='https://avatar-quiz-vyli.onrender.com'">Element Form</button>
+    <button class="option-btn" style="background-color:#144aa1 "onclick="window.location.href='characters.html'">Characters</button>
+    <button class="option-btn" style="background-color:#888277 "onclick="window.location.href='elements.html'">Element Page</button>
+    <button class="option-btn" style="background-color:#136310 "onclick="window.location.href='about.html'">About</button>
+  </div>  
+<div class = "container-info">
+  <h1> There are four key elements that make up the world.</h1>
+  <p>This includes Fire, Water, Earth and Air.</p>
+</div>
+
+<section class="elements-section">
+  <h2>Avatar Bending Arts</h2>
+  <div class="elements-grid">
+
+    <div class="element-card water" onclick="toggleCard(this)">
+      <div class="element-icon">💧</div>
+      <div class="element-name">Water</div>
+      <div class="sub-bending">
+        • Healing<br>
+        • Bloodbending<br>
+        • Plantbending<br>
+        • Icebending
+      </div>
+      <div class="quote">“Water is the element of change.” – Uncle Iroh</div>
+    </div>
+
+    <div class="element-card earth" onclick="toggleCard(this)">
+      <div class="element-icon">🌍</div>
+      <div class="element-name">Earth</div>
+      <div class="sub-bending">
+        • Metalbending<br>
+        • Lavabending<br>
+        • Sandbending
+      </div>
+      <div class="quote">“There’s no different angle, no clever solution, no trickity trick that’s gonna move that rock. You gotta face it head on.” – Toph</div>
+    </div>
+
+    <div class="element-card fire" onclick="toggleCard(this)">
+      <div class="element-icon">🔥</div>
+      <div class="element-name">Fire</div>
+      <div class="sub-bending">
+        • Lightning Generation<br>
+        • Lightning Redirection<br>
+        • Combustionbending
+      </div>
+      <div class="quote">“Fire is the element of power.” – Uncle Iroh</div>
+    </div>
+
+    <div class="element-card air" onclick="toggleCard(this)">
+      <div class="element-icon">🌪️</div>
+      <div class="element-name">Air</div>
+      <div class="sub-bending">
+        • Flight<br>
+        • Soundbending<br>
+        • Spiritual Projection
+      </div>
+      <div class="quote">“Air is the element of freedom.” – Uncle Iroh</div>
+    </div>
+    <div class="element-card avatar" onclick="toggleCard(this)">
+      <div class="element-icon">🔥🌊🗿🌀</div>
+      <div class="element-name">The Avatar</div>
+      <div class="sub-bending">
+        • Master of Water, Earth, Fire, and Air<br>
+        • Avatar State<br>
+        • Energybending<br>
+        • Bridge between worlds
+      </div>
+      <div class="quote">“When we hit our lowest point, we are open to the greatest change.” – Avatar Aang</div>
+    </div>
+    
+
+</div>
+</section>
+
+  <script>
+    function fetchOptions() {
+    const options = document.getElementById('options');
+    if (options.style.display === 'flex') {
+      options.style.display = 'none';
+    } else {
+      options.style.display = 'flex';
+      const children = options.querySelectorAll('.option-btn');
+      children.forEach(btn => {
+        btn.style.animation = 'none';
+        btn.offsetHeight;
+        btn.style.animation = '';
+      });
+    }
+  }
+  </script>
+  <script>
+    function toggleCard(card) {
+      card.classList.toggle('active');
+    }
+  </script>
+</body>

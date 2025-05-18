@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,19 +59,28 @@
       margin-bottom: 6px;
     }
 
+    .chart-section {
+      margin: 60px auto;
+      max-width: 1200px;
+    }
+
     .chart-container {
       max-width: 800px;
-      margin: 50px auto;
+      margin: 0 auto;
       background: #fff;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0,0,0,0.15);
     }
 
+    .button-section {
+      text-align: center;
+      margin: 40px auto;
+    }
+
     .element-button {
-      display: block;
-      margin: 30px auto;
-      padding: 10px 20px;
+      display: inline-block;
+      padding: 12px 24px;
       background: #3498db;
       color: white;
       border: none;
@@ -80,7 +88,8 @@
       text-align: center;
       text-decoration: none;
       font-weight: bold;
-      width: fit-content;
+      font-size: 1rem;
+      transition: background-color 0.3s;
     }
 
     .element-button:hover {
@@ -111,11 +120,15 @@
     {% endfor %}
   </div>
 
-  <div class="chart-container">
-    <canvas id="elementChart"></canvas>
+  <div class="chart-section">
+    <div class="chart-container">
+      <canvas id="elementChart"></canvas>
+    </div>
   </div>
 
-  <a class="element-button" href="{{ url_for('static', filename='../elements.html') }}">Learn More About Elements</a>
+  <div class="button-section">
+    <a class="element-button" href="{{ url_for('static', filename='../elements.html') }}">Learn More About Elements</a>
+  </div>
 
   <script>
     const ctx = document.getElementById('elementChart').getContext('2d');

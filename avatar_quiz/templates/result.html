@@ -100,7 +100,7 @@
   {% endif %}
 
   <div id="result">
-    <h2>{{ username }}, you are most likely an:</h2>
+    <h2>{{ username }}, you are most likely a:</h2>
 
     {% if element == 'Water' %}
       <h1>Water Bender 🌊</h1>
@@ -119,7 +119,7 @@
     <br><br>
     <a href="/">Take the quiz again</a> |
     <a href="/results">See everyone's results</a> |
-    <a href="{{ url_for('static', filename='../ElementPage.html') }}">Learn About the Elements</a>
+    <a href="{{ url_for('static', filename='../elements.html') }}">Learn About the Elements</a>
   </div>
 
 </body>

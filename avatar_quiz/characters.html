@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Characters</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+</head>
+
+<style>
+ .avatar-jumbotron {
+  background-color: #B6D7F4;
+  border: 3px solid #f4c135;
+  border-radius: 30px;
+  padding: 60px 20px;
+  margin: 60px auto;
+  box-shadow: 0 0 40px rgba(195, 136, 19, 0.6);
+  font-family: 'Cinzel Decorative', serif;
+}
+.avatar-jumbotron h1 {
+  color: rgb(195, 136, 19);
+  text-shadow: 3px 3px 5px black;
+}
+.avatar-jumbotron p {
+  color: #d8cfc2;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  text-shadow: 1px 1px 3px black;
+}
+body {
+  background-image: url('https://i.redd.it/91dlrvrogxac1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+  background-blend-mode: overlay; 
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(195, 136, 19);
+  font-family: 'Cinzel Decorative', serif;
+}
+
+
+.circle-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: rgb(122, 37, 9);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circle-btn:hover {
+      background-color: #d8cfc2;
+    }
+    .options-container {
+    position: fixed;
+    top: 10px;
+    left: 80px;
+    display: none;
+    flex-direction: row;
+    gap: 10px;
+    animation: fadeSlide 0.3s ease forwards;
+  }
+
+  .option-btn {
+    width: 120px;
+    padding: 10px;
+    background-color: rgb(122, 37, 9);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeSlide 0.3s ease forwards;
+  }
+  .container-info {
+    background-color: #B6D7F4;
+    border: 3px solid #f4c135;
+    border-radius: 30px;
+    padding: 30px 20px;
+    margin: 30px auto;
+    box-shadow: 0 0 40px rgba(195, 136, 19, 0.6);
+    font-family: 'Cinzel Decorative', serif;
+  }
+  .container-info h1 {
+  color: rgb(195, 136, 19);
+  text-shadow: 3px 3px 5px black;
+  text-align: center;
+}
+.container-info p {
+  color: rgb(255, 255, 255);
+  text-shadow: 3px 3px 5px black;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  text-align: center;
+}
+  @keyframes fadeSlide {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background-color: #B6D7F4;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 220px;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: bold;
+      color: #34495e;
+      margin-bottom: 5px;
+    }
+
+    .affiliation {
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+</style>
+
+<body>
+  <div class="avatar-jumbotron text-center text-light">
+    <div class="container py-5">
+      <h1 class="display-1">Welcome to the avatar character world!</h1>
+      <p class="lead">Here we have 2 shows, Avatar the Last Airbender and The legend of korra which each character having their own unique ways of bending styles</p>
+    </div>
+  </div>
+
+  <button class="circle-btn" onClick="fetchOptions()">+</button>
+
+  <div class="options-container" id="options">
+    <button class="option-btn" onclick ="window.location.href='Avatar.html'">Home</button>
+    <button class="option-btn" style="background-color:#ad750e "onclick = "window.location.href='https://avatar-quiz-vyli.onrender.com'">Element Form</button>
+    <button class="option-btn" style="background-color:#144aa1 "onclick="window.location.href='characters.html'">Characters</button>
+    <button class="option-btn" style="background-color:#888277 "onclick="window.location.href='elements.html'">Element Page</button>
+    <button class="option-btn" style="background-color:#136310 "onclick="window.location.href='about.html'">About</button>
+  </div>  
+<div class = "container-info">
+  <h1> Welcome To The Characters.</h1>
+  <p>Down below is some very known characters from ATLA (Avatar the Last Airbender) and TLOK (The legend of Korra).</p>
+</div>
+</div>
+  <script>
+    function fetchOptions() {
+    const options = document.getElementById('options');
+    if (options.style.display === 'flex') {
+      options.style.display = 'none';
+    } else {
+      options.style.display = 'flex';
+      const children = options.querySelectorAll('.option-btn');
+      children.forEach(btn => {
+        btn.style.animation = 'none';
+        btn.offsetHeight;
+        btn.style.animation = '';
+      });
+    }
+  }
+  </script>
+  <div class="grid" id="character-grid"></div>
+<script>
+  const grid = document.getElementById('character-grid');
+
+  const mainTVCharacters = [
+      "Aang", "Katara", "Sokka", "Zuko", "Toph Beifong", "Iroh", "Azula", "Appa", "Momo","Mai", "Ty Lee", "Bumi", "Ozai",
+      "Korra", "Mako", "Bolin", "Asami Sato", "Tenzin", "Lin Beifong", "Jinora", "Ikki", "Meelo",
+      "Iknik Blackstone Varrick", "Zhu Li Moon"
+    ];
+
+    async function loadCharacters() {
+      let page = 1;
+      let perPage = 100;
+      let found = new Map();
+
+      try {
+        while (page <= 5 && found.size < mainTVCharacters.length) {
+          const res = await fetch(`https://last-airbender-api.fly.dev/api/v1/characters?perPage=${perPage}&page=${page}`);
+          const data = await res.json();
+
+          data.forEach(char => {
+            if (
+              mainTVCharacters.includes(char.name) &&
+              char.photoUrl &&
+              !found.has(char.name)
+            ) {
+              found.set(char.name, char);
+            }
+          });
+
+          page++;
+        }
+
+        if (found.size === 0) {
+          grid.innerHTML = "<p>No characters found.</p>";
+          return;
+        }
+
+        found.forEach(character => {
+          const card = document.createElement('div');
+          card.className = 'card';
+
+          card.innerHTML = `
+            <img src="${character.photoUrl}" alt="${character.name}">
+            <div class="card-content">
+              <div class="name">${character.name}</div>
+              <div class="affiliation">${character.affiliation || 'Unknown'}</div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+      } catch (error) {
+        console.error("Failed to fetch characters:", error);
+        grid.innerHTML = "<p>Error loading data.</p>";
+      }
+    }
+
+    loadCharacters();
+</script>
+  
+</body>
+</body>
+</html>
