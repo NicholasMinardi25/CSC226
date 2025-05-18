@@ -189,6 +189,21 @@ body {
     .earth { border-left: 6px solid #4caf50; }
     .fire  { border-left: 6px solid #f44336; }
     .air   { border-left: 6px solid #ffc107; }
+
+    .avatar {
+  border-left: 6px solid transparent;
+  background: linear-gradient(135deg, #00bcd4, #4caf50, #f44336, #ffc107);
+  background-size: 300% 300%;
+  animation: avatarGlow 6s ease infinite;
+  color: #fff;
+}
+
+@keyframes avatarGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
   </style>
   <body>
   
@@ -261,6 +276,18 @@ body {
       </div>
       <div class="quote">“Air is the element of freedom.” – Uncle Iroh</div>
     </div>
+    <div class="element-card avatar" onclick="toggleCard(this)">
+      <div class="element-icon">🔥🌊🗿🌀</div>
+      <div class="element-name">The Avatar</div>
+      <div class="sub-bending">
+        • Master of Water, Earth, Fire, and Air<br>
+        • Avatar State<br>
+        • Energybending<br>
+        • Bridge between worlds
+      </div>
+      <div class="quote">“When we hit our lowest point, we are open to the greatest change.” – Avatar Aang</div>
+    </div>
+    
 
 </div>
 </section>
