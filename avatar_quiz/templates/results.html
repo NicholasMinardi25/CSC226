@@ -11,7 +11,6 @@
       color: #222;
       background: url('/static/avatar-background.jpg') no-repeat center center fixed;
       background-size: cover;
-      padding-bottom: 60px;
     }
 
     body::before {
@@ -22,22 +21,26 @@
       text-align: center;
       font-size: 2.2rem;
       font-weight: bold;
-      margin: 40px 0 30px 0;
+      margin-top: 40px;
       font-family: 'Georgia', serif;
+    }
+
+    section {
+      margin: 60px 0;
     }
 
     .group-section {
       display: flex;
       justify-content: space-around;
-      margin: 50px auto;
       max-width: 1200px;
+      margin: 0 auto;
       flex-wrap: wrap;
       text-align: left;
     }
 
     .group {
       background: rgba(255,255,255,0.95);
-      padding: 25px;
+      padding: 20px;
       border-radius: 12px;
       width: 250px;
       margin: 20px;
@@ -46,96 +49,105 @@
 
     .group h3 {
       font-size: 1.2rem;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       font-weight: bold;
-      color: #333;
     }
 
     .group ul {
       list-style: none;
       padding-left: 0;
-      margin-top: 10px;
     }
 
     .group li {
       font-size: 0.95rem;
-      margin-bottom: 8px;
-      padding: 3px 0;
-    }
-
-    .chart-section {
-      margin: 80px auto 60px auto;
-      max-width: 1200px;
+      margin-bottom: 6px;
     }
 
     .chart-container {
       max-width: 800px;
       margin: 0 auto;
       background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.15);
     }
 
-    .button-section {
+    .button-container {
       text-align: center;
-      margin: 70px auto 40px auto;
+      margin: 40px auto;
     }
 
     .element-button {
       display: inline-block;
-      padding: 14px 28px;
+      padding: 12px 24px;
       background: #3498db;
       color: white;
       border: none;
-      border-radius: 8px;
-      text-align: center;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.1rem;
-      transition: all 0.3s;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 1rem;
     }
 
     .element-button:hover {
       background-color: #2980b9;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    
+    .section-break {
+      height: 40px;
+      display: block;
+      content: "";
     }
   </style>
 </head>
 <body>
   <div class="page-title">All Users and Their Elements</div>
 
-  <div class="group-section">
-    {% for element, users in grouped.items() %}
-    <div class="group">
-      <h3>
-        {% if element == 'Fire' %}Fire Benders (Fire Nation)
-        {% elif element == 'Water' %}Water Benders (Water Tribe)
-        {% elif element == 'Air' %}Air Benders (Air Nomads)
-        {% elif element == 'Earth' %}Earth Benders (Earth Kingdom)
-        {% else %}{{ element }} Benders
-        {% endif %}
-      </h3>
-      <ul>
-        {% for user in users %}
-        <li>{{ user }}</li>
-        {% endfor %}
-      </ul>
+  
+  <section id="element-groups">
+    <div class="group-section">
+      {% for element, users in grouped.items() %}
+      <div class="group">
+        <h3>
+          {% if element == 'Fire' %}Fire Benders (Fire Nation)
+          {% elif element == 'Water' %}Water Benders (Water Tribe)
+          {% elif element == 'Air' %}Air Benders (Air Nomads)
+          {% elif element == 'Earth' %}Earth Benders (Earth Kingdom)
+          {% else %}{{ element }} Benders
+          {% endif %}
+        </h3>
+        <ul>
+          {% for user in users %}
+          <li>{{ user }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
+  </section>
 
-  <div class="chart-section">
+  
+  <br class="section-break">
+  <br class="section-break">
+
+  
+  <section id="element-chart">
     <div class="chart-container">
       <canvas id="elementChart"></canvas>
     </div>
-  </div>
+  </section>
 
-  <div class="button-section">
-    <a class="element-button" href="{{ url_for('homepage') }}">Home Page</a>
-  </div>
+  
+  <br class="section-break">
+  <br class="section-break">
+
+ 
+  <section id="learn-more">
+    <div class="button-container">
+      <a class="element-button" href="{{ url_for('static', filename='../elements.html') }}">Learn More About Elements</a>
+    </div>
+  </section>
 
   <script>
     const ctx = document.getElementById('elementChart').getContext('2d');
