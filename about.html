@@ -91,40 +91,75 @@ body {
     transform: translateY(-10px);
     animation: fadeSlide 0.3s ease forwards;
   }
-  .container-info {
-    background-color: #B6D7F4;
-    border: 3px solid #f4c135;
-    border-radius: 30px;
-    padding: 30px 20px;
-    margin: 30px auto;
-    box-shadow: 0 0 40px rgba(195, 136, 19, 0.6);
-    font-family: 'Cinzel Decorative', serif;
-  }
-  .container-info h1 {
-  color: rgb(195, 136, 19);
-  text-shadow: 3px 3px 5px black;
-  text-align: center;
-}
-.container-info p {
-  color: rgb(255, 255, 255);
-  text-shadow: 3px 3px 5px black;
-  font-size: 1.3rem;
-  margin-top: 10px;
-  text-align: center;
-}
+  
   @keyframes fadeSlide {
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
+  .about-container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 40px;
+      background: #ffffffcc;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+    }
 
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .quote {
+      font-style: italic;
+      text-align: center;
+      margin: 30px 0;
+      color: #666;
+    }
+
+    .credits {
+      margin-top: 40px;
+    }
+
+    .credits h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .credits ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .credits li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
   </style>
   <body>
   <div class="avatar-jumbotron text-center text-light">
     <div class="container py-5">
-      <h1 class="display-1">Welcome To The World Of Avatar</h1>
-      <p class="lead">Here we have 4 elements and one avatar</p>
+      <h1 class="display-1">Welcome To The About Page</h1>
+      <p class="lead">This contains the description of the project, inspiration, tools & resources</p>
     </div>
   </div>
 
@@ -137,10 +172,37 @@ body {
     <button class="option-btn" style="background-color:#888277 "onclick="window.location.href='elements.html'">Element Page</button>
     <button class="option-btn" style="background-color:#136310 "onclick="window.location.href='about.html'">About</button>
   </div>  
-<div class = "container-info">
-  <h1> Welcome to the avatar Elemental Quiz.</h1>
-  <p>This quiz is used to determine which bender you would become. There is a unique set of bendings alongisde there subbendings. You can find that in the element page!</p>
-</div>
+  <div class="about-container">
+    <h1>About This Project</h1>
+    <p>
+      This website is a fan-made tribute to the universe of <strong>Avatar: The Last Airbender</strong> and <strong>The Legend of Korra</strong>. It uses the public <a href="https://last-airbender-api.fly.dev" target="_blank">Last Airbender API</a> to showcase beloved characters, bending arts, and elemental powers.
+      This website also is a short, little, fun project to see which element you are destined to be.
+    </p>
+    <p>
+      On this website, You'll find not only a form/quiz that was assigned but a whole interactive character gallery, detailed information about the bending elements and their sub-styles, and immersive visuals inspired by the shows.
+    </p>
+    <br>
+    <p> 
+      A fun fact actually. Our original project was a harry potter themed form/quiz, but we thought of something else that was also divided into four housing/lifes. We chose Avatar since
+      it could be sorted like the four houses in harry potter. (Also only one of the group members (Nicholas) has seen all the harry potter movies).
+    </p>
+    <div class="quote">
+      “In the darkest times, hope is something you give yourself. That is the meaning of inner strength.” – Iroh
+    </div>
+
+    <div class="credits">
+      <h3>Credits & Tools</h3>
+      <ul>
+        <li>Characters & data from <a href="https://last-airbender-api.fly.dev" target="_blank">Last Airbender API</a></li>
+        <li>A quiz we took inspiration from</li>
+        <li>Design by [Nicholas Minardi]</li>
+        <li>Form Work by [Triston Packette]</li>
+        <li>Planner/slides by [Jayden Rodriguez] (slides is for our final project)</li>
+        <li>Team Spirit[ChatGpt]</li>
+        <li>Thank you Nickelodeon for this beautiful series and franchise.</li>
+      </ul>
+    </div>
+  </div>
 
 </div>
   <script>
