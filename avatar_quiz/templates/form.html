@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Avatar Quiz</title>
@@ -12,11 +12,14 @@
       opacity: 0;
       transform: scale(0.95);
       transition: all 0.3s ease;
+      text-align: left;
     }
+  
     .question.active {
       display: block;
       animation: popin 0.3s forwards;
     }
+  
     @keyframes popin {
       0% {
         opacity: 0;
@@ -27,15 +30,27 @@
         transform: scale(1);
       }
     }
+  
+    .question label {
+      display: block;
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+  
+    .question input[type="radio"] {
+      margin-right: 10px;
+    }
   </style>
+  
 </head>
+
 <body>
   <div class="container">
     <h2>Hi {{ username }}! Let’s discover your Avatar Element!!</h2>
     <form action="/submit" method="POST" id="quizForm">
       <input type="hidden" name="username" value="{{ username }}">
 
-      
+
       <div class="question active" id="q1">
         <label>1. Who's your favorite Avatar?</label>
         <label class="option"><input type="radio" name="q1" value="Aang" required> Aang</label>
@@ -65,17 +80,23 @@
 
       <div class="question" id="q4">
         <label>4. To win a fight, what approach do you take?</label>
-        <label class="option"><input type="radio" name="q4" value="Evade" required> Evade, defend, and neutralize nonviolently</label>
-        <label class="option"><input type="radio" name="q4" value="Stand your ground"> Stand your ground, block attacks, and use all your strength</label>
-        <label class="option"><input type="radio" name="q4" value="Heavy offense"> Heavy offense, keep moving, and dodge while attacking</label>
-        <label class="option"><input type="radio" name="q4" value="Counterstrike"> Counterstrike instead of initiate, then use their force against them</label>
+        <label class="option"><input type="radio" name="q4" value="Evade" required> Evade, defend, and neutralize
+          nonviolently</label>
+        <label class="option"><input type="radio" name="q4" value="Stand your ground"> Stand your ground, block attacks,
+          and use all your strength</label>
+        <label class="option"><input type="radio" name="q4" value="Heavy offense"> Heavy offense, keep moving, and dodge
+          while attacking</label>
+        <label class="option"><input type="radio" name="q4" value="Counterstrike"> Counterstrike instead of initiate,
+          then use their force against them</label>
         <button type="button" onclick="nextQuestion(4)">Next</button>
       </div>
 
       <div class="question" id="q5">
         <label>5. How do you process your emotions?</label>
-        <label class="option"><input type="radio" name="q5" value="Openly and passionately" required> Openly and passionately</label>
-        <label class="option"><input type="radio" name="q5" value="Calmly and introspectively"> Calmly and introspectively</label>
+        <label class="option"><input type="radio" name="q5" value="Openly and passionately" required> Openly and
+          passionately</label>
+        <label class="option"><input type="radio" name="q5" value="Calmly and introspectively"> Calmly and
+          introspectively</label>
         <button type="button" onclick="nextQuestion(5)">Next</button>
       </div>
 
@@ -133,4 +154,5 @@
     });
   </script>
 </body>
+
 </html>
