@@ -55,7 +55,6 @@ input[type="radio"] {
   padding: 8px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  width: 80%;
 }
 .question label.option {
   display: block;
