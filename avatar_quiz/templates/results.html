@@ -7,35 +7,33 @@
   <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body {
-      color: #222;
-      background: url('/static/avatar-background.jpg') no-repeat center center fixed;
-      background-size: cover;
+    
+    body.results-page {
+      display: block !important;
+      height: auto !important;
+      justify-content: normal !important;
+      align-items: normal !important;
     }
-
-    body::before {
-      background: rgba(255, 255, 255, 0.92);
+    
+    .results-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
     .page-title {
       text-align: center;
       font-size: 2.2rem;
       font-weight: bold;
-      margin-top: 40px;
+      margin: 40px 0;
       font-family: 'Georgia', serif;
     }
 
-    section {
-      margin: 60px 0;
-    }
-
-    .group-section {
+    .element-groups {
       display: flex;
       justify-content: space-around;
-      max-width: 1200px;
-      margin: 0 auto;
       flex-wrap: wrap;
-      text-align: left;
+      margin: 40px auto;
     }
 
     .group {
@@ -49,64 +47,68 @@
 
     .group h3 {
       font-size: 1.2rem;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       font-weight: bold;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
     }
 
     .group ul {
       list-style: none;
       padding-left: 0;
+      margin: 0;
     }
 
     .group li {
       font-size: 0.95rem;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      padding: 4px 0;
+    }
+
+    .chart-section {
+      margin: 80px auto;
+      max-width: 800px;
     }
 
     .chart-container {
-      max-width: 800px;
-      margin: 0 auto;
       background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.15);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
     }
 
-    .button-container {
+    .button-section {
       text-align: center;
-      margin: 40px auto;
+      margin: 60px auto;
     }
 
     .element-button {
       display: inline-block;
-      padding: 12px 24px;
+      padding: 14px 28px;
       background: #3498db;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s;
     }
 
     .element-button:hover {
       background-color: #2980b9;
-    }
-
-    
-    .section-break {
-      height: 40px;
-      display: block;
-      content: "";
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
   </style>
 </head>
-<body>
-  <div class="page-title">All Users and Their Elements</div>
-
-  
-  <section id="element-groups">
-    <div class="group-section">
+<body class="results-page"> 
+  <div class="results-container">
+    <h1 class="page-title">All Users and Their Elements</h1>
+    
+    
+    <div class="element-groups">
       {% for element, users in grouped.items() %}
       <div class="group">
         <h3>
@@ -125,29 +127,19 @@
       </div>
       {% endfor %}
     </div>
-  </section>
 
-  
-  <br class="section-break">
-  <br class="section-break">
-
-  
-  <section id="element-chart">
-    <div class="chart-container">
-      <canvas id="elementChart"></canvas>
+    
+    <div class="chart-section">
+      <div class="chart-container">
+        <canvas id="elementChart"></canvas>
+      </div>
     </div>
-  </section>
 
-  
-  <br class="section-break">
-  <br class="section-break">
-
- 
-  <section id="learn-more">
-    <div class="button-container">
-      <a class="element-button" href="{{ url_for('static', filename='../elements.html') }}">Learn More About Elements</a>
+   
+    <div class="button-section">
+      <a class="element-button" href="{{ url_for('homepage') }}">Home</a>
     </div>
-  </section>
+  </div>
 
   <script>
     const ctx = document.getElementById('elementChart').getContext('2d');
