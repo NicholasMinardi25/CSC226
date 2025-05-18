@@ -1,25 +1,25 @@
 
-from flask import Flask, render_template, request
-import sqlite3
 import os
+import psycopg2
+from flask import Flask, render_template, request
 from collections import defaultdict
 
 app = Flask(__name__)
-DATABASE = "avatar.db"
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 def init_db():
-    with sqlite3.connect(DATABASE) as conn:
-        c = conn.cursor()
-        c.execute('''
-            CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                username TEXT,
-                q1 TEXT, q2 TEXT, q3 TEXT, q4 TEXT,
-                q5 TEXT, q6 TEXT, q7 TEXT, q8 TEXT,
-                element TEXT
-            )
-        ''')
-        conn.commit()
+    with psycopg2.connect(DATABASE_URL) as conn:
+        with conn.cursor() as c:
+            c.execute('''
+                CREATE TABLE IF NOT EXISTS users (
+                    id SERIAL PRIMARY KEY,
+                    username TEXT,
+                    q1 TEXT, q2 TEXT, q3 TEXT, q4 TEXT,
+                    q5 TEXT, q6 TEXT, q7 TEXT, q8 TEXT,
+                    element TEXT
+                )
+            ''')
+            conn.commit()
 
 @app.route("/")
 def homepage():
@@ -27,7 +27,7 @@ def homepage():
 
 @app.route("/elements")
 def elements():
-    return render_template("elements.html")
+    return render_template("ElementPage.html")
 
 @app.route("/about")
 def about():
@@ -65,22 +65,22 @@ def submit():
 
     element = max(element_scores, key=element_scores.get)
 
-    with sqlite3.connect(DATABASE) as conn:
-        c = conn.cursor()
-        c.execute('''
-            INSERT INTO users (username, q1, q2, q3, q4, q5, q6, q7, q8, element)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (username, *answers, element))
-        conn.commit()
+    with psycopg2.connect(DATABASE_URL) as conn:
+        with conn.cursor() as c:
+            c.execute('''
+                INSERT INTO users (username, q1, q2, q3, q4, q5, q6, q7, q8, element)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            ''', (username, *answers, element))
+            conn.commit()
 
     return render_template("result.html", username=username, element=element)
 
 @app.route("/results")
 def results():
-    with sqlite3.connect(DATABASE) as conn:
-        c = conn.cursor()
-        c.execute("SELECT username, element FROM users")
-        data = c.fetchall()
+    with psycopg2.connect(DATABASE_URL) as conn:
+        with conn.cursor() as c:
+            c.execute("SELECT username, element FROM users")
+            data = c.fetchall()
 
     grouped = defaultdict(list)
     for username, element in data:
