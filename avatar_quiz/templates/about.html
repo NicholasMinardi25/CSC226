@@ -166,12 +166,24 @@ body {
   <button class="circle-btn" onClick="fetchOptions()">+</button>
 
   <div class="options-container" id="options">
-    <button class="option-btn" onclick ="window.location.href='Avatar.html'">Home</button>
-    <button class="option-btn" style="background-color:#ad750e "onclick = "window.location.href='https://avatar-quiz-vyli.onrender.com'">Element Form</button>
-    <button class="option-btn" style="background-color:#144aa1 "onclick="window.location.href='characters.html'">Characters</button>
-    <button class="option-btn" style="background-color:#888277 "onclick="window.location.href='elements.html'">Element Page</button>
-    <button class="option-btn" style="background-color:#136310 "onclick="window.location.href='about.html'">About</button>
-  </div>  
+    <a href="{{ url_for('homepage') }}"><button>Home</button></a>
+    <a href="{{ url_for('welcome') }}">
+      <button class="option-btn" style="background-color:#ad750e">Element Form</button>
+    </a>
+  
+    <a href="{{ url_for('characters') }}">
+      <button class="option-btn" style="background-color:#144aa1">Characters</button>
+    </a>
+  
+    <a href="{{ url_for('elements') }}">
+      <button class="option-btn" style="background-color:#888277">Element Page</button>
+    </a>
+  
+    <a href="{{ url_for('about') }}">
+      <button class="option-btn" style="background-color:#136310">About</button>
+    </a>
+  
+  </div>
   <div class="about-container">
     <h1>About This Project</h1>
     <p>
