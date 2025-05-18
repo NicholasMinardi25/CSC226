@@ -11,6 +11,7 @@
       color: #222;
       background: url('/static/avatar-background.jpg') no-repeat center center fixed;
       background-size: cover;
+      padding-bottom: 60px;
     }
 
     body::before {
@@ -21,14 +22,14 @@
       text-align: center;
       font-size: 2.2rem;
       font-weight: bold;
-      margin-top: 40px;
+      margin: 40px 0 30px 0;
       font-family: 'Georgia', serif;
     }
 
     .group-section {
       display: flex;
       justify-content: space-around;
-      margin: 40px auto;
+      margin: 50px auto;
       max-width: 1200px;
       flex-wrap: wrap;
       text-align: left;
@@ -36,7 +37,7 @@
 
     .group {
       background: rgba(255,255,255,0.95);
-      padding: 20px;
+      padding: 25px;
       border-radius: 12px;
       width: 250px;
       margin: 20px;
@@ -45,22 +46,25 @@
 
     .group h3 {
       font-size: 1.2rem;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       font-weight: bold;
+      color: #333;
     }
 
     .group ul {
       list-style: none;
       padding-left: 0;
+      margin-top: 10px;
     }
 
     .group li {
       font-size: 0.95rem;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      padding: 3px 0;
     }
 
     .chart-section {
-      margin: 60px auto;
+      margin: 80px auto 60px auto;
       max-width: 1200px;
     }
 
@@ -68,32 +72,35 @@
       max-width: 800px;
       margin: 0 auto;
       background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.15);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
     }
 
     .button-section {
       text-align: center;
-      margin: 40px auto;
+      margin: 70px auto 40px auto;
     }
 
     .element-button {
       display: inline-block;
-      padding: 12px 24px;
+      padding: 14px 28px;
       background: #3498db;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       text-align: center;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1rem;
-      transition: background-color 0.3s;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .element-button:hover {
       background-color: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
   </style>
 </head>

@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 import sqlite3
 import os
 from collections import defaultdict
@@ -22,6 +22,22 @@ def init_db():
         conn.commit()
 
 @app.route("/")
+def homepage():
+    return render_template("Avatar.html")
+
+@app.route("/elements")
+def elements():
+    return render_template("ElementPage.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/characters")
+def characters():
+    return render_template("characters.html")
+
+@app.route("/welcome")
 def welcome():
     return render_template("welcome.html")
 
@@ -34,8 +50,6 @@ def quiz():
 def submit():
     username = request.form.get("username")
     answers = [request.form.get(f"q{i}") for i in range(1, 9)]
-
-    # Logic to determine element based on answers
     element_scores = {"Water": 0, "Earth": 0, "Fire": 0, "Air": 0}
 
     for answer in answers:
@@ -51,7 +65,6 @@ def submit():
 
     element = max(element_scores, key=element_scores.get)
 
-    # Store in database
     with sqlite3.connect(DATABASE) as conn:
         c = conn.cursor()
         c.execute('''
