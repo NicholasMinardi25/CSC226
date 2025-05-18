@@ -217,7 +217,9 @@ body {
   <button class="circle-btn" onClick="fetchOptions()">+</button>
 
   <div class="options-container" id="options">
-    <a href="{{ url_for('homepage') }}"><button>Home</button></a>
+    <a href="{{ url_for('homepage') }}">
+      <button class="option-btn">Home</button>
+    </a>
     <a href="{{ url_for('welcome') }}">
       <button class="option-btn" style="background-color:#ad750e">Element Form</button>
     </a>
