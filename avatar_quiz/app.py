@@ -27,7 +27,7 @@ def homepage():
 
 @app.route("/elements")
 def elements():
-    return render_template("ElementPage.html")
+    return render_template("elements.html")
 
 @app.route("/about")
 def about():
