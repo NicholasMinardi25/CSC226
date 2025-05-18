@@ -1,73 +1,121 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>All Users and Their Element</title>
-  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+  <title>All Users and Their Elements</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f5f5f5;
+      color: #222;
+      background: url('/static/avatar-background.jpg') no-repeat center center fixed;
+      background-size: cover;
     }
-    h1 {
+
+    body::before {
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .page-title {
       text-align: center;
-      margin-bottom: 40px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-top: 40px;
+      font-family: 'Georgia', serif;
     }
-    .group {
-      margin-bottom: 40px;
-    }
-    canvas {
-      max-width: 600px;
+
+    .group-section {
+      display: flex;
+      justify-content: space-around;
       margin: 40px auto;
-      display: block;
+      max-width: 1200px;
+      flex-wrap: wrap;
+      text-align: left;
     }
-    button {
+
+    .group {
+      background: rgba(255,255,255,0.95);
+      padding: 20px;
+      border-radius: 12px;
+      width: 250px;
+      margin: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .group h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .group ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .group li {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .chart-container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    }
+
+    .element-button {
       display: block;
-      margin: 0 auto;
+      margin: 30px auto;
       padding: 10px 20px;
-      background-color: #1ca4c4;
+      background: #3498db;
       color: white;
       border: none;
       border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      width: fit-content;
     }
-    button:hover {
-      background-color: #178ba6;
+
+    .element-button:hover {
+      background-color: #2980b9;
     }
   </style>
 </head>
 <body>
+  <div class="page-title">All Users and Their Elements</div>
 
-  <h1>All Users and Their Element</h1>
-
-  {% for element, users in grouped.items() %}
+  <div class="group-section">
+    {% for element, users in grouped.items() %}
     <div class="group">
-      <h2>
-        {% if element == 'Water' %}
-          Water Benders (Water Tribe)
-        {% elif element == 'Fire' %}
-          Fire Benders (Fire Nation)
-        {% elif element == 'Earth' %}
-          Earth Benders (Earth Kingdom)
-        {% elif element == 'Air' %}
-          Air Benders (Air Nomads)
-        {% else %}
-          {{ element }} Benders
+      <h3>
+        {% if element == 'Fire' %}Fire Benders (Fire Nation)
+        {% elif element == 'Water' %}Water Benders (Water Tribe)
+        {% elif element == 'Air' %}Air Benders (Air Nomads)
+        {% elif element == 'Earth' %}Earth Benders (Earth Kingdom)
+        {% else %}{{ element }} Benders
         {% endif %}
-      </h2>
+      </h3>
       <ul>
         {% for user in users %}
-          <li>{{ user }}</li>
+        <li>{{ user }}</li>
         {% endfor %}
       </ul>
     </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 
-  <canvas id="elementChart" width="600" height="300"></canvas>
+  <div class="chart-container">
+    <canvas id="elementChart"></canvas>
+  </div>
+
+  <a class="element-button" href="{{ url_for('static', filename='../elements.html') }}">Learn More About Elements</a>
 
   <script>
     const ctx = document.getElementById('elementChart').getContext('2d');
@@ -94,12 +142,6 @@
         }
       }
     });
-  </script>  
-
-  <br>
-  <a href="{{ url_for('static', filename='../ElementPage.html') }}">
-    <button>Learn More About Elements</button>
-  </a>
-
+  </script>
 </body>
 </html>

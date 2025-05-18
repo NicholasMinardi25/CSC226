@@ -7,7 +7,41 @@
   <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
   <style>
     .question {
-      transition: opacity 0.4s ease;
+      display: none;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.3s ease;
+    }
+
+    .question.active {
+      display: block;
+      animation: popin 0.3s forwards;
+    }
+
+    @keyframes popin {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    button {
+      margin-top: 20px;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: normal;
+      text-align: left;
     }
   </style>
 </head>
@@ -17,73 +51,73 @@
     <form action="/submit" method="POST" id="quizForm">
       <input type="hidden" name="username" value="{{ username }}">
 
-      <div class="question" id="q1">
-        <h3>1. Who's your favorite Avatar?</h3>
-        <label><input type="radio" name="q1" value="Aang" required> Aang</label><br>
-        <label><input type="radio" name="q1" value="Roku"> Roku</label><br>
-        <label><input type="radio" name="q1" value="Korra"> Korra</label><br>
-        <label><input type="radio" name="q1" value="Kyoshi"> Kyoshi</label><br>
+      <div class="question active" id="q1">
+        <label>1. Who's your favorite Avatar?</label>
+        <label><input type="radio" name="q1" value="Aang" required> Aang</label>
+        <label><input type="radio" name="q1" value="Roku"> Roku</label>
+        <label><input type="radio" name="q1" value="Korra"> Korra</label>
+        <label><input type="radio" name="q1" value="Kyoshi"> Kyoshi</label>
         <button type="button" onclick="nextQuestion(1)">Next</button>
       </div>
 
       <div class="question" id="q2">
-        <h3>2. It's dinnertime! Pick your ideal meal:</h3>
-        <label><input type="radio" name="q2" value="A spicy dish" required> A spicy dish</label><br>
-        <label><input type="radio" name="q2" value="A hearty banquet"> A hearty banquet</label><br>
-        <label><input type="radio" name="q2" value="A seafood feast"> A seafood feast</label><br>
-        <label><input type="radio" name="q2" value="A vegetarian delight"> A vegetarian delight</label><br>
+        <label>2. It's dinnertime! Pick your ideal meal:</label>
+        <label><input type="radio" name="q2" value="A spicy dish" required> A spicy dish</label>
+        <label><input type="radio" name="q2" value="A hearty banquet"> A hearty banquet</label>
+        <label><input type="radio" name="q2" value="A seafood feast"> A seafood feast</label>
+        <label><input type="radio" name="q2" value="A vegetarian delight"> A vegetarian delight</label>
         <button type="button" onclick="nextQuestion(2)">Next</button>
       </div>
 
       <div class="question" id="q3">
-        <h3>3. Pick an animal to be your companion:</h3>
-        <label><input type="radio" name="q3" value="Polar Bear Dog" required> Polar Bear Dog</label><br>
-        <label><input type="radio" name="q3" value="Badgermole"> Badgermole</label><br>
-        <label><input type="radio" name="q3" value="Dragon"> Dragon</label><br>
-        <label><input type="radio" name="q3" value="Flying Bison"> Flying Bison</label><br>
+        <label>3. Pick an animal to be your companion:</label>
+        <label><input type="radio" name="q3" value="Polar Bear Dog" required> Polar Bear Dog</label>
+        <label><input type="radio" name="q3" value="Badgermole"> Badgermole</label>
+        <label><input type="radio" name="q3" value="Dragon"> Dragon</label>
+        <label><input type="radio" name="q3" value="Flying Bison"> Flying Bison</label>
         <button type="button" onclick="nextQuestion(3)">Next</button>
       </div>
 
       <div class="question" id="q4">
-        <h3>4. To win a fight, what approach do you take?</h3>
-        <label><input type="radio" name="q4" value="Evade" required> Evade, defend, and neutralize nonviolently</label><br>
-        <label><input type="radio" name="q4" value="Stand your ground"> Stand your ground, block attacks, and use all your strength</label><br>
-        <label><input type="radio" name="q4" value="Heavy offense"> Heavy offense, keep moving, and dodge while attacking</label><br>
-        <label><input type="radio" name="q4" value="Counterstrike"> Counterstrike instead of initiate, then use their force against them</label><br>
+        <label>4. To win a fight, what approach do you take?</label>
+        <label><input type="radio" name="q4" value="Evade" required> Evade, defend, and neutralize nonviolently</label>
+        <label><input type="radio" name="q4" value="Stand your ground"> Stand your ground, block attacks, and use all your strength</label>
+        <label><input type="radio" name="q4" value="Heavy offense"> Heavy offense, keep moving, and dodge while attacking</label>
+        <label><input type="radio" name="q4" value="Counterstrike"> Counterstrike instead of initiate, then use their force against them</label>
         <button type="button" onclick="nextQuestion(4)">Next</button>
       </div>
 
       <div class="question" id="q5">
-        <h3>5. How do you process your emotions?</h3>
-        <label><input type="radio" name="q5" value="Openly and passionately" required> Openly and passionately</label><br>
-        <label><input type="radio" name="q5" value="Calmly and introspectively"> Calmly and introspectively</label><br>
+        <label>5. How do you process your emotions?</label>
+        <label><input type="radio" name="q5" value="Openly and passionately" required> Openly and passionately</label>
+        <label><input type="radio" name="q5" value="Calmly and introspectively"> Calmly and introspectively</label>
         <button type="button" onclick="nextQuestion(5)">Next</button>
       </div>
 
       <div class="question" id="q6">
-        <h3>6. What motivates you most?</h3>
-        <label><input type="radio" name="q6" value="Justice" required> Justice</label><br>
-        <label><input type="radio" name="q6" value="Balance"> Balance</label><br>
-        <label><input type="radio" name="q6" value="Victory"> Victory</label><br>
-        <label><input type="radio" name="q6" value="Freedom"> Freedom</label><br>
+        <label>6. What motivates you most?</label>
+        <label><input type="radio" name="q6" value="Justice" required> Justice</label>
+        <label><input type="radio" name="q6" value="Balance"> Balance</label>
+        <label><input type="radio" name="q6" value="Victory"> Victory</label>
+        <label><input type="radio" name="q6" value="Freedom"> Freedom</label>
         <button type="button" onclick="nextQuestion(6)">Next</button>
       </div>
 
       <div class="question" id="q7">
-        <h3>7. Pick a season:</h3>
-        <label><input type="radio" name="q7" value="Winter" required> Winter</label><br>
-        <label><input type="radio" name="q7" value="Spring"> Spring</label><br>
-        <label><input type="radio" name="q7" value="Summer"> Summer</label><br>
-        <label><input type="radio" name="q7" value="Fall"> Fall</label><br>
+        <label>7. Pick a season:</label>
+        <label><input type="radio" name="q7" value="Winter" required> Winter</label>
+        <label><input type="radio" name="q7" value="Spring"> Spring</label>
+        <label><input type="radio" name="q7" value="Summer"> Summer</label>
+        <label><input type="radio" name="q7" value="Fall"> Fall</label>
         <button type="button" onclick="nextQuestion(7)">Next</button>
       </div>
 
       <div class="question" id="q8">
-        <h3>8. Which environment feels like home?</h3>
-        <label><input type="radio" name="q8" value="Ocean" required> Ocean</label><br>
-        <label><input type="radio" name="q8" value="Mountains"> Mountains</label><br>
-        <label><input type="radio" name="q8" value="City"> City</label><br>
-        <label><input type="radio" name="q8" value="Sky"> Sky</label><br>
+        <label>8. Which environment feels like home?</label>
+        <label><input type="radio" name="q8" value="Ocean" required> Ocean</label>
+        <label><input type="radio" name="q8" value="Mountains"> Mountains</label>
+        <label><input type="radio" name="q8" value="City"> City</label>
+        <label><input type="radio" name="q8" value="Sky"> Sky</label>
         <button type="submit">Reveal My Avatar</button>
       </div>
     </form>
@@ -91,23 +125,24 @@
 
   <script>
     function nextQuestion(current) {
-      const currentDiv = document.getElementById("q" + current);
-      const nextDiv = document.getElementById("q" + (current + 1));
-      currentDiv.style.opacity = 0;
-      setTimeout(() => {
-        currentDiv.style.display = "none";
-        nextDiv.style.display = "block";
-        nextDiv.style.opacity = 0;
-        setTimeout(() => nextDiv.style.opacity = 1, 50);
-      }, 300);
+      const currentDiv = document.getElementById('q' + current);
+      const nextDiv = document.getElementById('q' + (current + 1));
+
+      if (currentDiv.querySelector('input:checked')) {
+        currentDiv.classList.remove('active');
+        nextDiv.classList.add('active');
+      } else {
+        alert('Please select an option to continue.');
+      }
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       const allQuestions = document.querySelectorAll(".question");
       allQuestions.forEach((q, i) => {
-        if (i !== 0) {
-          q.style.display = "none";
-          q.style.opacity = 0;
+        if (i === 0) {
+          q.classList.add('active');
+        } else {
+          q.classList.remove('active');
         }
       });
     });
