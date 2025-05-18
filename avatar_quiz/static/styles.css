@@ -57,6 +57,16 @@ input[type="radio"] {
   border: 1px solid #ccc;
   width: 80%;
 }
+.question label.option {
+  display: block;
+  margin: 10px 0;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.question input[type="radio"] {
+  margin-right: 10px;
+}
 
 button {
   margin-top: 15px;
