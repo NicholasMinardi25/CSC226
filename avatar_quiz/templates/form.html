@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Avatar Quiz</title>
@@ -11,35 +12,37 @@
       transform: scale(0.95);
       transition: all 0.3s ease;
     }
-  
+
     .question.active {
       display: block;
       animation: popin 0.3s forwards;
     }
-  
+
     @keyframes popin {
       0% {
         opacity: 0;
         transform: scale(0.95);
       }
+
       100% {
         opacity: 1;
         transform: scale(1);
       }
     }
-  
+
     button {
       margin-top: 20px;
     }
   </style>
-  
+
 </head>
+
 <body>
   <div class="container">
     <h2>Hi {{ username }}! Let’s discover your Avatar identity step-by-step!</h2>
     <form action="/submit" method="POST" id="quizForm">
       <input type="hidden" name="username" value="{{ username }}">
-
+  
       <div class="question active" id="q1">
         <label>1. Who's your favorite Avatar?</label><br>
         <input type="radio" name="q1" value="Aang" required> Aang<br>
@@ -48,7 +51,7 @@
         <input type="radio" name="q1" value="Kyoshi"> Kyoshi<br>
         <button type="button" onclick="nextQuestion(1)">Next</button>
       </div>
-
+  
       <div class="question" id="q2">
         <label>2. It's dinnertime! Pick your ideal meal:</label><br>
         <input type="radio" name="q2" value="A spicy dish" required> A spicy dish<br>
@@ -57,7 +60,7 @@
         <input type="radio" name="q2" value="A vegetarian delight"> A vegetarian delight<br>
         <button type="button" onclick="nextQuestion(2)">Next</button>
       </div>
-
+  
       <div class="question" id="q3">
         <label>3. Pick an animal to be your companion:</label><br>
         <input type="radio" name="q3" value="Polar Bear Dog" required> Polar Bear Dog<br>
@@ -66,7 +69,7 @@
         <input type="radio" name="q3" value="Flying Bison"> Flying Bison<br>
         <button type="button" onclick="nextQuestion(3)">Next</button>
       </div>
-
+  
       <div class="question" id="q4">
         <label>4. To win a fight, what approach do you take?</label><br>
         <input type="radio" name="q4" value="Evade" required> Evade, defend, and neutralize nonviolently<br>
@@ -75,11 +78,38 @@
         <input type="radio" name="q4" value="Counterstrike"> Counterstrike instead of initiate, then use their force against them<br>
         <button type="button" onclick="nextQuestion(4)">Next</button>
       </div>
-
+  
       <div class="question" id="q5">
         <label>5. How do you process your emotions?</label><br>
         <input type="radio" name="q5" value="Openly and passionately" required> Openly and passionately<br>
         <input type="radio" name="q5" value="Calmly and introspectively"> Calmly and introspectively<br>
+        <button type="button" onclick="nextQuestion(5)">Next</button>
+      </div>
+  
+      <div class="question" id="q6">
+        <label>6. What motivates you most?</label><br>
+        <input type="radio" name="q6" value="Justice" required> Justice<br>
+        <input type="radio" name="q6" value="Balance"> Balance<br>
+        <input type="radio" name="q6" value="Victory"> Victory<br>
+        <input type="radio" name="q6" value="Freedom"> Freedom<br>
+        <button type="button" onclick="nextQuestion(6)">Next</button>
+      </div>
+  
+      <div class="question" id="q7">
+        <label>7. Pick a season:</label><br>
+        <input type="radio" name="q7" value="Winter" required> Winter<br>
+        <input type="radio" name="q7" value="Spring"> Spring<br>
+        <input type="radio" name="q7" value="Summer"> Summer<br>
+        <input type="radio" name="q7" value="Fall"> Fall<br>
+        <button type="button" onclick="nextQuestion(7)">Next</button>
+      </div>
+  
+      <div class="question" id="q8">
+        <label>8. Which environment feels like home?</label><br>
+        <input type="radio" name="q8" value="Ocean" required> Ocean<br>
+        <input type="radio" name="q8" value="Mountains"> Mountains<br>
+        <input type="radio" name="q8" value="City"> City<br>
+        <input type="radio" name="q8" value="Sky"> Sky<br>
         <button type="submit">Reveal My Avatar</button>
       </div>
     </form>
@@ -89,7 +119,7 @@
     function nextQuestion(current) {
       const currentDiv = document.getElementById('q' + current);
       const nextDiv = document.getElementById('q' + (current + 1));
-  
+
       if (currentDiv.querySelector('input:checked')) {
         currentDiv.classList.remove('active');
         nextDiv.classList.add('active');
@@ -98,7 +128,7 @@
       }
     }
   </script>
-  
-</body>
-</html>
 
+</body>
+
+</html>

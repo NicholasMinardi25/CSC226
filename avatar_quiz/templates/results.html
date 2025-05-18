@@ -2,40 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>All Avatar Results</title>
+  <title>All Users and Their Element</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    .avatar-group {
-      margin-bottom: 30px;
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .group {
+      margin-bottom: 40px;
+    }
+    canvas {
+      max-width: 600px;
+      margin: 40px auto;
+      display: block;
+    }
+    button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #1ca4c4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #178ba6;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>All Users & Their Avatars</h1>
 
-    {% set grouped = {} %}
-    {% for user in users %}
-      {% set avatar = user[7] %}
-      {% if avatar not in grouped %}
-        {% set _ = grouped.update({avatar: []}) %}
-      {% endif %}
-      {% set _ = grouped[avatar].append(user) %}
-    {% endfor %}
+  <h1>All Users and Their Element</h1>
 
-    {% for avatar, group in grouped.items() %}
-      <div class="avatar-group">
-        <h2>{{ avatar }}</h2>
-        <ul>
-          {% for user in group %}
-            <li>{{ user[1] }} ({{ user[2] }}, {{ user[3] }}, {{ user[4] }})</li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endfor %}
+  {% for element, users in grouped.items() %}
+    <div class="group">
+      <h2>
+        {% if element == 'Water' %}
+          Water Benders (Water Tribe)
+        {% elif element == 'Fire' %}
+          Fire Benders (Fire Nation)
+        {% elif element == 'Earth' %}
+          Earth Benders (Earth Kingdom)
+        {% elif element == 'Air' %}
+          Air Benders (Air Nomads)
+        {% else %}
+          {{ element }} Benders
+        {% endif %}
+      </h2>
+      <ul>
+        {% for user in users %}
+          <li>{{ user }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
 
-    <a href="/">← Back to Start</a>
-  </div>
+  <canvas id="elementChart" width="600" height="300"></canvas>
+
+  <script>
+    const ctx = document.getElementById('elementChart').getContext('2d');
+    const elementChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: {{ labels | tojson }},
+        datasets: [{
+          label: 'Number of Users',
+          data: {{ data | tojson }},
+          backgroundColor: ['#1ca4c4', '#ff3300', '#795548', '#d4f1f9'],
+          borderRadius: 5
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              precision: 0
+            }
+          }
+        }
+      }
+    });
+  </script>  
+
+  <br>
+  <a href="{{ url_for('static', filename='../ElementPage.html') }}">
+    <button>Learn More About Elements</button>
+  </a>
+
 </body>
 </html>
-

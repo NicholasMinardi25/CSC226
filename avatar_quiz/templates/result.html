@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Avatar Result</title>
+  <title>Your Element Result</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   <style>
     html, body {
@@ -70,7 +71,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -86,23 +87,39 @@
 </head>
 <body>
 
-  {% if 'Water' in avatar %}
+  {% if element == 'Water' %}
     <div class="fill water"></div>
-  {% elif 'Fire' in avatar %}
+  {% elif element == 'Fire' %}
     <div class="fill fire"></div>
-  {% elif 'Air' in avatar %}
+  {% elif element == 'Air' %}
     <div class="fill air"></div>
-  {% elif 'Earth' in avatar or 'Toph' in avatar %}
+  {% elif element == 'Earth' %}
     <div class="fill earth"></div>
   {% else %}
     <div class="fill water"></div>
   {% endif %}
 
   <div id="result">
-    <h2>{{ username }}, you are most like...</h2>
-    <h1>{{ avatar }}</h1>
+    <h2>{{ username }}, you are most likely an:</h2>
+
+    {% if element == 'Water' %}
+      <h1>Water Bender 🌊</h1>
+      <p>Represents change, adaptability, and the ability to flow and adjust. The Water Tribe is known for their strong sense of community and resilience.</p>
+    {% elif element == 'Earth' %}
+      <h1>Earth Bender 🪨</h1>
+      <p>Represents stability, perseverance, and strength. Earth Kingdom benders are grounded, practical, and unwavering in their beliefs.</p>
+    {% elif element == 'Fire' %}
+      <h1>Fire Bender 🔥</h1>
+      <p>Represents power, ambition, and inner drive. Fire Nation benders are known for their intensity, leadership, and determination.</p>
+    {% elif element == 'Air' %}
+      <h1>Air Bender 🌪️</h1>
+      <p>Represents freedom, peace, and spiritual balance. Air Nomads value detachment from material things and seek harmony with the world.</p>
+    {% endif %}
+
+    <br><br>
     <a href="/">Take the quiz again</a> |
-    <a href="/results">See everyone's results</a>
+    <a href="/results">See everyone's results</a> |
+    <a href="{{ url_for('static', filename='../ElementPage.html') }}">Learn About the Elements</a>
   </div>
 
 </body>
