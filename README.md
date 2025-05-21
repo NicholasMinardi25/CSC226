@@ -33,7 +33,7 @@ Setup Instructions
 1. Clone the Repository
 
 bash
-git clone https://github.com/NickMinardi25/avatar_quiz.git
+git clone https://github.com/NicholasMinardi25/avatar_quiz.git
 cd avatar_quiz
 
 
