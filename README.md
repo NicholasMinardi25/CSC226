@@ -46,13 +46,13 @@ pip install -r requirements.txt
 4. Run the App
 
 ALl the files included:
-Avatar.html
-about.html
-characters.html
-elements.html
-Ds_store
-.gitignore
-requirments.txt
+ Avatar.html,
+ about.html,
+ characters.html,
+ elements.html,
+ Ds_store,
+ .gitignore,
+ requirments.txt,
 and the folder avatar_quiz
 
 python3 app.py
